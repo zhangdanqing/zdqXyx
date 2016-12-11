@@ -24,8 +24,8 @@ function Ship(ctx){
 		if(this.left<0){
 			this.left = 0;
 		}
-		if(this.left>320-this.width){
-			this.left = 320-this.width;
+		if(this.left>375-this.width){
+			this.left = 375-this.width;
 		}
 		if(this.top<0){
 			this.top = 0;
@@ -67,13 +67,13 @@ function Ship(ctx){
 					foodlist[f.id] = null;
 					if(f.type==0){
 						gameMonitor.stop();
-						$('#gameoverPanel').show();
+						//$('#gameoverPanel').show();
 
 						setTimeout(function(){
-							$('#gameoverPanel').hide();
+							//$('#gameoverPanel').hide();
 							$('#resultPanel').show();
 							gameMonitor.getScore();
-						}, 2000);
+						}, 500);
 					}
 					else{
 						$('#score').text(++gameMonitor.score);
@@ -143,9 +143,9 @@ function ImageMonitor(){
 
 
 var gameMonitor = {
-	w : 320,
-	h : 568,
-	bgWidth : 320,
+	w : 375,
+	h : 667,
+	bgWidth : 375,
 	bgHeight : 1126,
 	time : 0,
 	timmer : null,
@@ -197,13 +197,13 @@ var gameMonitor = {
 			$('#frontpage').css('left', '-100%');
 		});
 
-		body.on(gameMonitor.eventType.start, '#guidePanel', function(){
-			$(this).hide();
-			_this.ship = new Ship(ctx);
-			_this.ship.paint();
-      		_this.ship.controll();
-			gameMonitor.run(ctx);
-		});
+		// body.on(gameMonitor.eventType.start, '#guidePanel', function(){
+		// 	$(this).hide();
+		// 	_this.ship = new Ship(ctx);
+		// 	_this.ship.paint();
+      	// 	_this.ship.controll();
+		// 	gameMonitor.run(ctx);
+		// });
 
 		body.on(gameMonitor.eventType.start, '.share', function(){
 			$('.weixin-share').show().on(gameMonitor.eventType.start, function(){
